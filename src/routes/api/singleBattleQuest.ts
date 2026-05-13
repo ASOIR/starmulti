@@ -64,7 +64,7 @@ interface AbortBody {
     category: number
 }
 
-interface ReturnRushEvent {
+export interface ReturnRushEvent {
     rush_battle_reward_list: {
         kind: number,
         kind_id: number,

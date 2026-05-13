@@ -1,4 +1,4 @@
-from mitmproxy import http, dns
+from mitmproxy import http, dns, tcp
 import ipaddress
 import logging
 
@@ -57,3 +57,11 @@ def request(flow: http.HTTPFlow):
         prefix = prefixes[prefix_type]
         if prefix != "":
             flow.request.path = f"{prefix}{flow.request.path}"
+
+def tcp_start(flow: tcp.TCPFlow):
+    import logging
+    logging.info(f"[MULTIPLAYER] Intercepted TCP to {flow.server_conn.address}")
+    # Route raw TCP multiplayer traffic to the Dummy TCP server
+    if flow.server_conn.address and flow.server_conn.address[0] == "198.51.100.141":
+        logging.info("[MULTIPLAYER] Redirecting TCP to 127.0.0.1:8082")
+        flow.server_conn.address = ("127.0.0.1", 8082)

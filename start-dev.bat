@@ -31,10 +31,10 @@ if not defined FOUND_NODE (
 ::Find mitmproxy with several methods
 set "MITMPROXYCOMMAND="
 if exist "%MITMPROXYFOLDER%\mitmweb.exe" (
-    set "MITMPROXYCOMMAND=cd /d "%MITMPROXYFOLDER%" && .\mitmweb.exe --mode wireguard --set connection_strategy=lazy --allow-hosts gc-openapi-zinny3.kakaogames.com --allow-hosts gc-infodesk-zinny3.kakaogames.com --allow-hosts na.wdfp.kakaogames.com --allow-hosts patch.wdfp.kakaogames.com -s ..\scripts\mitm-redirect-traffic.py"
+    set "MITMPROXYCOMMAND=cd /d "%MITMPROXYFOLDER%" && .\mitmweb.exe --mode wireguard@51820 --mode wireguard@51821 --mode wireguard@51822 --set connection_strategy=lazy --allow-hosts gc-openapi-zinny3.kakaogames.com --allow-hosts gc-infodesk-zinny3.kakaogames.com --allow-hosts na.wdfp.kakaogames.com --allow-hosts patch.wdfp.kakaogames.com --allow-hosts 198.51.100.141 --tcp-hosts 198.51.100.141 -s ..\scripts\mitm-redirect-traffic.py"
 ) else (
     if exist "C:\Program Files\mitmproxy\bin\mitmweb.exe" (
-        set "MITMPROXYCOMMAND=cd /d "%MITMPROXYSCRIPTFOLDER%" && echo Using existing mitmproxy install... && "C:\Program Files\mitmproxy\bin\mitmweb.exe" --mode wireguard --set connection_strategy=lazy --allow-hosts gc-openapi-zinny3.kakaogames.com --allow-hosts gc-infodesk-zinny3.kakaogames.com --allow-hosts na.wdfp.kakaogames.com --allow-hosts patch.wdfp.kakaogames.com -s mitm-redirect-traffic.py"
+        set "MITMPROXYCOMMAND=cd /d "%MITMPROXYSCRIPTFOLDER%" && echo Using existing mitmproxy install... && "C:\Program Files\mitmproxy\bin\mitmweb.exe" --mode wireguard@51820 --mode wireguard@51821 --mode wireguard@51822 --set connection_strategy=lazy --allow-hosts gc-openapi-zinny3.kakaogames.com --allow-hosts gc-infodesk-zinny3.kakaogames.com --allow-hosts na.wdfp.kakaogames.com --allow-hosts patch.wdfp.kakaogames.com --allow-hosts 198.51.100.141 --tcp-hosts 198.51.100.141 -s mitm-redirect-traffic.py"
     ) else (
         set FOUND_MITMPROXY=
         for %%e in (%PATHEXT%) do (
@@ -45,7 +45,7 @@ if exist "%MITMPROXYFOLDER%\mitmweb.exe" (
             )
         )
         if defined FOUND_MITMPROXY (
-            set "MITMPROXYCOMMAND=cd /d "%MITMPROXYSCRIPTFOLDER%" && echo Using existing mitmproxy install in path... && mitmweb --mode wireguard --set connection_strategy=lazy --allow-hosts gc-openapi-zinny3.kakaogames.com --allow-hosts gc-infodesk-zinny3.kakaogames.com --allow-hosts na.wdfp.kakaogames.com --allow-hosts patch.wdfp.kakaogames.com -s mitm-redirect-traffic.py"
+            set "MITMPROXYCOMMAND=cd /d "%MITMPROXYSCRIPTFOLDER%" && echo Using existing mitmproxy install in path... && mitmweb --mode wireguard@51820 --mode wireguard@51821 --mode wireguard@51822 --set connection_strategy=lazy --allow-hosts gc-openapi-zinny3.kakaogames.com --allow-hosts gc-infodesk-zinny3.kakaogames.com --allow-hosts na.wdfp.kakaogames.com --allow-hosts patch.wdfp.kakaogames.com --allow-hosts 198.51.100.141 --tcp-hosts 198.51.100.141 -s mitm-redirect-traffic.py"
         ) else (
             echo "mitmproxy is not installed in the '.mitmproxy' folder. Opening download page at https://mitmproxy.org/downloads..."
             explorer "https://mitmproxy.org/downloads"

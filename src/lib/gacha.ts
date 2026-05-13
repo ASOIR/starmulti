@@ -25,13 +25,13 @@ const characterGachaRankRates = {
 }
 const rateUpCharacterGachaRates = {
     normal: [
-        50, // 5*
-        250, // 4*,
-        700, // 3*
+        1000, // 5*
+        0, // 4*,
+        0, // 3*
     ],
     multiGuarantee: [
-        50, // 5*
-        950 // 4*
+        1000, // 5*
+        0 // 4*
     ],
 }
 

@@ -256,7 +256,7 @@ const routes = async (fastify: FastifyInstance) => {
         const sendFull = sizeHeader === 'fulfill'
 
         const headers = generateDataHeaders({
-            viewer_id: body.viewer_id,
+            viewer_id: body?.viewer_id,
             asset_update: true
         })
 

@@ -224,6 +224,16 @@ const routes = async (fastify: FastifyInstance) => {
         reply.status(200).send({})
     })
 
+    fastify.post("/v3/promotion/checkUrlPromotion", (_, reply: FastifyReply) => {
+        reply.status(200).send({
+            "result": "NO_PROMOTION"
+        })
+    })
+
+    fastify.post("/v3/agreement/set", (_, reply: FastifyReply) => {
+        reply.status(200).send({})
+    })
+
     /**
      * Tells the client the status of the user's policy agreements.
      */
@@ -345,6 +355,14 @@ const routes = async (fastify: FastifyInstance) => {
             "zatExpiryTime": zatToken.expires.getTime(),
             "zrt": zrtToken.token,
             "zrtExpiryTime": zrtToken.expires.getTime()
+        })
+    })
+
+    // Log endpoints
+    fastify.post("/v3/log/writeRoundLog", async (request: FastifyRequest, reply: FastifyReply) => {
+        return reply.status(200).send({
+            "status": 200,
+            "message": "success"
         })
     })
 
